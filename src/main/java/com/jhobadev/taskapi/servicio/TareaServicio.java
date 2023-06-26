@@ -19,6 +19,6 @@ public class TareaServicio {
 
     public Tarea crearTarea(TareaInDTO tareaInDTO) {
         Tarea tarea = tareaInDTOaTarea.map(tareaInDTO);
-        return tareaRepositorio.save(tarea);
+        return this.tareaRepositorio.save(tarea);
     }
 }
