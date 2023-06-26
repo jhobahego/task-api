@@ -6,6 +6,8 @@ import com.jhobadev.taskapi.persistencia.repositorio.TareaRepositorio;
 import com.jhobadev.taskapi.servicio.dto.TareaInDTO;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class TareaServicio {
 
@@ -15,6 +17,10 @@ public class TareaServicio {
     public TareaServicio(TareaRepositorio tareaRepositorio, TareaInDTOaTarea tareaInDTOaTarea) {
         this.tareaRepositorio = tareaRepositorio;
         this.tareaInDTOaTarea = tareaInDTOaTarea;
+    }
+
+    public List<Tarea> obtenerTodasLasTareas() {
+        return this.tareaRepositorio.findAll();
     }
 
     public Tarea crearTarea(TareaInDTO tareaInDTO) {
