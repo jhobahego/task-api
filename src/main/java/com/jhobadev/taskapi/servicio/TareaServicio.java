@@ -18,6 +18,7 @@ public class TareaServicio {
     }
 
     public Tarea crearTarea(TareaInDTO tareaInDTO) {
-        return tareaInDTOaTarea.map(tareaInDTO);
+        Tarea tarea = tareaInDTOaTarea.map(tareaInDTO);
+        return tareaRepositorio.save(tarea);
     }
 }
