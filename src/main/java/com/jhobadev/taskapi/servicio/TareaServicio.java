@@ -4,9 +4,11 @@ import com.jhobadev.taskapi.mapper.TareaInDTOaTarea;
 import com.jhobadev.taskapi.persistencia.entidad.Tarea;
 import com.jhobadev.taskapi.persistencia.repositorio.TareaRepositorio;
 import com.jhobadev.taskapi.servicio.dto.TareaInDTO;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TareaServicio {
@@ -26,5 +28,10 @@ public class TareaServicio {
     public Tarea crearTarea(TareaInDTO tareaInDTO) {
         Tarea tarea = tareaInDTOaTarea.map(tareaInDTO);
         return this.tareaRepositorio.save(tarea);
+    }
+
+    @Transactional
+    public void completarTarea(Long id) {
+        this.tareaRepositorio.completarTarea(id);
     }
 }
