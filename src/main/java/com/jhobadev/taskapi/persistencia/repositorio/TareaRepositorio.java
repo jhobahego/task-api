@@ -11,4 +11,8 @@ public interface TareaRepositorio extends JpaRepository<Tarea, Long> {
     @Modifying
     @Query(value = "UPDATE TAREA SET completed=true WHERE ID=:id", nativeQuery = true)
     void completarTarea(@Param("id") Long id);
+
+    @Modifying
+    @Query(value = "DELETE FROM TAREA WHERE completed=true", nativeQuery = true)
+    void eliminarTareasCompletadas();
 }
