@@ -50,4 +50,9 @@ public class TareaServicio {
 
         this.tareaRepositorio.deleteById(id);
     }
+
+    @Transactional
+    public void eliminarTareasCompletadas() {
+        this.tareaRepositorio.eliminarTareasCompletadas();
+    }
 }
