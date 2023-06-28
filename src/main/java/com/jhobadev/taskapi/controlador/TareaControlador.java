@@ -36,7 +36,7 @@ public class TareaControlador {
         return ResponseEntity.noContent().build();
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/eliminar/{id}")
     public ResponseEntity<Void> eliminarTarea(@PathVariable("id") Long id) {
         this.tareaServicio.eliminarTarea(id);
 
