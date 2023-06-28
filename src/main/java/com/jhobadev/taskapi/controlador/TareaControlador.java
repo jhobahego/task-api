@@ -42,4 +42,11 @@ public class TareaControlador {
 
         return ResponseEntity.noContent().build();
     }
+
+    @DeleteMapping("/eliminar-completadas")
+    public ResponseEntity<Void> eliminarCompletadas() {
+        this.tareaServicio.eliminarTareasCompletadas();
+
+        return ResponseEntity.noContent().build();
+    }
 }
