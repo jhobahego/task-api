@@ -41,4 +41,13 @@ public class TareaServicio {
 
         this.tareaRepositorio.completarTarea(id);
     }
+
+    public void eliminarTarea(Long id) {
+        Optional<Tarea> tareaOptional = this.tareaRepositorio.findById(id);
+        if (tareaOptional.isEmpty()) {
+            throw new TareaExcepciones("Tarea no encontrada", HttpStatus.NOT_FOUND);
+        }
+
+        this.tareaRepositorio.deleteById(id);
+    }
 }
