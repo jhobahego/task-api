@@ -3,7 +3,6 @@ package com.jhobadev.taskapi.controlador;
 import com.jhobadev.taskapi.persistencia.entidad.Tarea;
 import com.jhobadev.taskapi.servicio.TareaServicio;
 import com.jhobadev.taskapi.servicio.dto.TareaInDTO;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -33,6 +32,13 @@ public class TareaControlador {
     @PatchMapping("/completar/{id}")
     public ResponseEntity<?> completarTarea(@PathVariable("id") Long id) {
         this.tareaServicio.completarTarea(id);
+
+        return ResponseEntity.noContent().build();
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> eliminarTarea(@PathVariable("id") Long id) {
+        this.tareaServicio.eliminarTarea(id);
 
         return ResponseEntity.noContent().build();
     }
