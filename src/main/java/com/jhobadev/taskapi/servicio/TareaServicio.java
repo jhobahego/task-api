@@ -34,12 +34,14 @@ public class TareaServicio {
 
     @Transactional
     public void completarTarea(Long id) {
-        Optional<Tarea> tarea = this.tareaRepositorio.findById(id);
-        if (tarea.isEmpty()) {
+        Optional<Tarea> tareaOptional = this.tareaRepositorio.findById(id);
+        if (tareaOptional.isEmpty()) {
             throw new TareaExcepciones("Tarea no encontrada", HttpStatus.NOT_FOUND);
         }
 
-        this.tareaRepositorio.completarTarea(id);
+        Tarea tarea = tareaOptional.get();
+        boolean completed = !tarea.isCompleted();
+        this.tareaRepositorio.completarTarea(completed, id);
     }
 
     public void eliminarTarea(Long id) {

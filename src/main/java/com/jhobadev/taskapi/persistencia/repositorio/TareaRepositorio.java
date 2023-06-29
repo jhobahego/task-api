@@ -9,8 +9,8 @@ import org.springframework.data.repository.query.Param;
 public interface TareaRepositorio extends JpaRepository<Tarea, Long> {
 
     @Modifying
-    @Query(value = "UPDATE TAREA SET completed=true WHERE ID=:id", nativeQuery = true)
-    void completarTarea(@Param("id") Long id);
+    @Query(value = "UPDATE TAREA SET completed=:completed WHERE ID=:id", nativeQuery = true)
+    void completarTarea(@Param("completed") boolean completed, @Param("id") Long id);
 
     @Modifying
     @Query(value = "DELETE FROM TAREA WHERE completed=true", nativeQuery = true)
