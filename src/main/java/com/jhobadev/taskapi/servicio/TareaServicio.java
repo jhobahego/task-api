@@ -28,6 +28,9 @@ public class TareaServicio {
     }
 
     public Tarea crearTarea(TareaInDTO tareaInDTO) {
+        if (tareaInDTO.getTitle().length() == 0) {
+            throw new TareaExcepciones("la tarea no puede estar vacia", HttpStatus.BAD_REQUEST);
+        }
         Tarea tarea = tareaInDTOaTarea.map(tareaInDTO);
         return this.tareaRepositorio.save(tarea);
     }
