@@ -31,6 +31,10 @@ public class TareaServicio {
         if (tareaInDTO.getTitle().length() == 0) {
             throw new TareaExcepciones("la tarea no puede estar vacia", HttpStatus.BAD_REQUEST);
         }
+        if (tareaInDTO.getTitle().length() < 4) {
+            throw new TareaExcepciones("La tarea debe tener minimo 4 caracteres", HttpStatus.BAD_REQUEST);
+        }
+
         Tarea tarea = tareaInDTOaTarea.map(tareaInDTO);
         return this.tareaRepositorio.save(tarea);
     }
