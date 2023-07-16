@@ -1,5 +1,6 @@
 package com.jhobadev.taskapi.controlador;
 
+import com.jhobadev.taskapi.modelos.RespuestaAPI;
 import com.jhobadev.taskapi.modelos.Tarea;
 import com.jhobadev.taskapi.servicio.TareaServicio;
 import com.jhobadev.taskapi.dtos.TareaInDTO;
@@ -26,9 +27,13 @@ public class TareaControlador {
     }
 
     @PostMapping()
-    public ResponseEntity<Tarea> crearTarea(@ModelAttribute TareaInDTO tareaInDTO) throws URISyntaxException {
+    public ResponseEntity<RespuestaAPI> crearTarea(@ModelAttribute TareaInDTO tareaInDTO) throws URISyntaxException {
         Tarea tareaCreada = this.tareaServicio.crearTarea(tareaInDTO);
-        return ResponseEntity.created(new URI("/api/tareas"+tareaCreada.getId())).body(tareaCreada);
+        RespuestaAPI respuesta = new RespuestaAPI();
+        respuesta.setTarea(tareaCreada);
+        respuesta.setExito(true);
+        respuesta.setMensaje("Tarea creada correctamente");
+        return ResponseEntity.created(new URI("/api/tareas"+tareaCreada.getId())).body(respuesta);
     }
 
     @PatchMapping("/completar/{id}")
