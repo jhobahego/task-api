@@ -7,6 +7,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.List;
 
 @RestController
@@ -24,9 +26,10 @@ public class TareaControlador {
         return this.tareaServicio.obtenerTodasLasTareas();
     }
 
-    @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public Tarea crearTarea(@ModelAttribute TareaInDTO tareaInDTO) {
-        return this.tareaServicio.crearTarea(tareaInDTO);
+    @PostMapping()
+    public ResponseEntity<Tarea> crearTarea(@ModelAttribute TareaInDTO tareaInDTO) throws URISyntaxException {
+        Tarea tareaCreada = this.tareaServicio.crearTarea(tareaInDTO);
+        return ResponseEntity.created(new URI("/api/tareas"+tareaCreada.getId())).body(tareaCreada);
     }
 
     @PatchMapping("/completar/{id}")
