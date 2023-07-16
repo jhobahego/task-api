@@ -6,6 +6,8 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.util.Optional;
+
 public interface TareaRepositorio extends JpaRepository<Tarea, Long> {
 
     @Modifying
@@ -15,4 +17,6 @@ public interface TareaRepositorio extends JpaRepository<Tarea, Long> {
     @Modifying
     @Query(value = "DELETE FROM TAREA WHERE completed=true", nativeQuery = true)
     void eliminarTareasCompletadas();
+
+    Optional<Tarea> findByTitle(String title);
 }
