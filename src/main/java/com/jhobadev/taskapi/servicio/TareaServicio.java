@@ -35,6 +35,11 @@ public class TareaServicio {
             throw new TareaExcepciones("La tarea debe tener minimo 4 caracteres", HttpStatus.BAD_REQUEST);
         }
 
+        Optional<Tarea> tareaOptional = tareaRepositorio.findByTitle(tareaInDTO.getTitle());
+        if (tareaOptional.isPresent()) {
+            throw new TareaExcepciones("Tarea ya existente, corrige el titulo", HttpStatus.BAD_REQUEST);
+        }
+
         Tarea tarea = tareaInDTOaTarea.map(tareaInDTO);
         return this.tareaRepositorio.save(tarea);
     }
