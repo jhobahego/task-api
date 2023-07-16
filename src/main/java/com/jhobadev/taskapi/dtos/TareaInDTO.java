@@ -1,4 +1,4 @@
-package com.jhobadev.taskapi.servicio.dto;
+package com.jhobadev.taskapi.dtos;
 
 import lombok.Data;
 

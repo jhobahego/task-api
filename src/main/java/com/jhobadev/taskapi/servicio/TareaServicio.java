@@ -2,9 +2,9 @@ package com.jhobadev.taskapi.servicio;
 
 import com.jhobadev.taskapi.excepciones.TareaExcepciones;
 import com.jhobadev.taskapi.mapper.TareaInDTOaTarea;
-import com.jhobadev.taskapi.persistencia.entidad.Tarea;
-import com.jhobadev.taskapi.persistencia.repositorio.TareaRepositorio;
-import com.jhobadev.taskapi.servicio.dto.TareaInDTO;
+import com.jhobadev.taskapi.modelos.Tarea;
+import com.jhobadev.taskapi.repositorio.TareaRepositorio;
+import com.jhobadev.taskapi.dtos.TareaInDTO;
 import jakarta.transaction.Transactional;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;

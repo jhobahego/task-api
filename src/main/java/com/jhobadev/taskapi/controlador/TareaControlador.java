@@ -1,9 +1,8 @@
 package com.jhobadev.taskapi.controlador;
 
-import com.jhobadev.taskapi.persistencia.entidad.Tarea;
+import com.jhobadev.taskapi.modelos.Tarea;
 import com.jhobadev.taskapi.servicio.TareaServicio;
-import com.jhobadev.taskapi.servicio.dto.TareaInDTO;
-import org.springframework.http.MediaType;
+import com.jhobadev.taskapi.dtos.TareaInDTO;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

@@ -1,4 +1,4 @@
-package com.jhobadev.taskapi.persistencia.entidad;
+package com.jhobadev.taskapi.modelos;
 
 import jakarta.persistence.*;
 import lombok.Data;

@@ -1,6 +1,6 @@
-package com.jhobadev.taskapi.persistencia.repositorio;
+package com.jhobadev.taskapi.repositorio;
 
-import com.jhobadev.taskapi.persistencia.entidad.Tarea;
+import com.jhobadev.taskapi.modelos.Tarea;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
