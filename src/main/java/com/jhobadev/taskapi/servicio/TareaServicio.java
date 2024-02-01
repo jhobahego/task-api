@@ -28,16 +28,13 @@ public class TareaServicio {
     }
 
     public Tarea crearTarea(TareaInDTO tareaInDTO) {
-        if (tareaInDTO.getTitle().length() == 0) {
-            throw new TareaExcepciones("la tarea no puede estar vacia", HttpStatus.BAD_REQUEST);
-        }
-        if (tareaInDTO.getTitle().length() < 4) {
-            throw new TareaExcepciones("La tarea debe tener minimo 4 caracteres", HttpStatus.BAD_REQUEST);
-        }
-
         Optional<Tarea> tareaOptional = tareaRepositorio.findByTitle(tareaInDTO.getTitle());
         if (tareaOptional.isPresent()) {
             throw new TareaExcepciones("Tarea ya existente, corrige el titulo", HttpStatus.BAD_REQUEST);
+        }
+
+        if (tareaInDTO.getTitle().length() < 4) {
+            throw new TareaExcepciones("La tarea debe tener minimo 4 caracteres", HttpStatus.BAD_REQUEST);
         }
 
         Tarea tarea = tareaInDTOaTarea.map(tareaInDTO);

@@ -1,8 +1,10 @@
 package com.jhobadev.taskapi.dtos;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 public class TareaInDTO {
     String title;
 }

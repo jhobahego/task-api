@@ -27,7 +27,7 @@ public class TareaControlador {
     }
 
     @PostMapping()
-    public ResponseEntity<RespuestaAPI> crearTarea(@ModelAttribute TareaInDTO tareaInDTO) throws URISyntaxException {
+    public ResponseEntity<RespuestaAPI> crearTarea(@RequestBody TareaInDTO tareaInDTO) throws URISyntaxException {
         Tarea tareaCreada = this.tareaServicio.crearTarea(tareaInDTO);
         RespuestaAPI respuesta = new RespuestaAPI();
         respuesta.setTarea(tareaCreada);
