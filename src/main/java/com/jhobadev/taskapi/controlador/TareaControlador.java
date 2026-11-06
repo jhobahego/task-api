@@ -4,6 +4,7 @@ import com.jhobadev.taskapi.modelos.RespuestaAPI;
 import com.jhobadev.taskapi.modelos.Tarea;
 import com.jhobadev.taskapi.servicio.TareaServicio;
 import com.jhobadev.taskapi.dtos.TareaInDTO;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,13 +28,13 @@ public class TareaControlador {
     }
 
     @PostMapping()
-    public ResponseEntity<RespuestaAPI> crearTarea(@RequestBody TareaInDTO tareaInDTO) throws URISyntaxException {
+    public ResponseEntity<RespuestaAPI> crearTarea(@Valid @RequestBody TareaInDTO tareaInDTO) throws URISyntaxException {
         Tarea tareaCreada = this.tareaServicio.crearTarea(tareaInDTO);
         RespuestaAPI respuesta = new RespuestaAPI();
         respuesta.setTarea(tareaCreada);
         respuesta.setExito(true);
         respuesta.setMensaje("Tarea creada correctamente");
-        return ResponseEntity.created(new URI("/api/tareas"+tareaCreada.getId())).body(respuesta);
+        return ResponseEntity.created(new URI("/api/tareas/" + tareaCreada.getId())).body(respuesta);
     }
 
     @PatchMapping("/completar/{id}")

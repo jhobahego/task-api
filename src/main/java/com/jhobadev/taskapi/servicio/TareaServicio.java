@@ -33,7 +33,8 @@ public class TareaServicio {
             throw new TareaExcepciones("Tarea ya existente, corrige el titulo", HttpStatus.BAD_REQUEST);
         }
 
-        if (tareaInDTO.getTitle().length() < 4) {
+        String title = tareaInDTO.getTitle();
+        if (title == null || title.length() < 4) {
             throw new TareaExcepciones("La tarea debe tener minimo 4 caracteres", HttpStatus.BAD_REQUEST);
         }
 
